@@ -14,12 +14,20 @@ trigger:
 pool:
   vmImage: ubuntu-latest
 
-steps:
-- task: Bash@3
-  inputs:
-    targetType: 'inline'
-    script: |
-      echo 'Hello world'
+variables:
+  name: John
+  
+jobs:
+- job: 
+  steps:
+    - checkout: self
+    - script: echo "hello $(name)"
+# steps:
+# - task: Bash@3
+#   inputs:
+#     targetType: 'inline'
+#     script: |
+#       echo 'Hello world'
 # - task: Maven@4
 #   inputs:
 #     mavenPomFile: 'pom.xml'
